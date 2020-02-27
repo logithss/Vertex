@@ -3,12 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vertex;
+package Vertex;
 
 /**
  *
  * @author cstuser
  */
 public class Player extends Object{
+    static float speed;
+    static float angle;
+    static float fov;
+
+    public Player(float speed) {
+        this.speed = speed;
+    }
+    
     
 }

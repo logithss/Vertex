@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import javafx.scene.shape.TriangleMesh;
 import javax.swing.JFrame;
 
+
 /**
  *
  * @author cstuser
@@ -16,26 +17,28 @@ import javax.swing.JFrame;
 public class Main {
 
     //static World game;
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args){
         // TODO code application logic here
         
         JFrame window = new JFrame("Vertex Engine");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setSize(480, 360);
         window.setResizable(true);
-        window.setUndecorated(false);
+        //window.setUndecorated(true);
         window.setVisible(true);
-        //game = new World();
-       /* window.add(game);
+        
+        RenderPanel panel = new RenderPanel();
+        Game.panel = panel;
+        window.add(panel);
+        window.setVisible(true);
         
         
         while(true){
-            Thread.sleep(game.speed);
-            if(!game.gameOver)
-                game.drawSnake();
-            game.repaint();
-            //System.out.println("DONE");
-        }*/
+          Game.gameLoop();
+          panel.repaint();
+        }
+        
+        
     }
     
 }
