@@ -10,15 +10,19 @@ package Vertex;
  * @author cstuser
  */
 public class Point {
-    int x, y;
+    float x, y;
 
     public Point() {
     }
 
-    public Point(int x, int y) {
+    public Point(float x, float y) {
         this.x = x;
         this.y = y;
     }
     
+    public String toString()
+    {
+        return "x : " + x + " y : " + y;
+    }
     
 }

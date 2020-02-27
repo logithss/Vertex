@@ -10,16 +10,15 @@ package Vertex;
  * @author cstuser
  */
 public class Wall {
-    Point p1, p2;
+    Line line;
     float z;
     float height;
     String texture;
     Boolean isCollider;
     Boolean isVisible;
 
-    public Wall(Point p1, Point p2, float z, float height, String texture, Boolean isCollider, Boolean isVisible) {
-        this.p1 = p1;
-        this.p2 = p2;
+    public Wall(Line line, float z, float height, String texture, Boolean isCollider, Boolean isVisible) {
+        this.line = line;
         this.z = z;
         this.height = height;
         this.texture = texture;
@@ -27,9 +26,8 @@ public class Wall {
         this.isVisible = isVisible;
     }
 
-    public Wall(Point p1, Point p2, float z, float height, String texture) {
-        this.p1 = p1;
-        this.p2 = p2;
+    public Wall(Line line, float z, float height, String texture) {
+        this.line = line;
         this.z = z;
         this.height = height;
         this.texture = texture;

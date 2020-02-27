@@ -32,6 +32,13 @@ public class Main {
         window.add(panel);
         window.setVisible(true);
         
+        Line l1 = new Line(new Point(0, 0), new Point(10, 10));
+        Line l2 = new Line(new Point(0, 10), new Point(10, 0));
+        
+       Point p = l1.isCrossing(l2);
+        System.out.println(p);
+        
+        
         
         while(true){
           Game.gameLoop();
