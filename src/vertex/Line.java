@@ -34,58 +34,56 @@ public class Line {
             float x2 = p2.x; float y2 = p2.y;
             float x3 = l2.p1.x; float y3 = l2.p1.y;
             float x4 = l2.p2.x; float y4 = l2.p2.y;
-            float ixOut, iyOut;
+            float ixOut = 0;
+            float iyOut = 0;
             
-            https://krunker.io/?game=MIA:eb8u5
+            float detL1 = Det(x1, y1, x2, y2);
+            float detL2 = Det(x3, y3, x4, y4);
+            float x1mx2 = x1 - x2;
+            float x3mx4 = x3 - x4;
+            float y1my2 = y1 - y2;
+            float y3my4 = y3 - y4;
+
+            float xnom = Det(detL1, x1mx2, detL2, x3mx4);
+            float ynom = Det(detL1, y1my2, detL2, y3my4);
+            float denom = Det(x1mx2, y1my2, x3mx4, y3my4);
+            if (denom == 0.0)//Lines don't seem to cross
+            {
+                    System.out.println("NO CROSS");
+                    ixOut = -10000000;
+                    iyOut = -10000000;
+                    return null;
+            }
+
+            ixOut = xnom / denom;
+            iyOut = ynom / denom;
+
+            if (verifyBetweenRange(x1, x2, (float)ixOut) &&
+                    verifyBetweenRange(x3, x4, (float)ixOut) &&
+                    verifyBetweenRange(y1, y2, (float)iyOut) &&
+                    verifyBetweenRange(y3, y4, (float)iyOut))
+            {
+
+
+                    if (!Float.isFinite(ixOut) || !Float.isFinite(iyOut)) //Probably a numerical issue
+                    {
+                            System.out.println("INF");
+                            return null;
+                    }
+                    else
+                    {
+                            System.out.println("ALL GOOD");
+                            return new Point(ixOut, iyOut);
+                    }
+
+            }
+            else
+            {
+                    System.out.println("NOT IN BOUND");
+                    return null;
+            }
             
-            
-		float detL1 = Det(x1, y1, x2, y2);
-		float detL2 = Det(x3, y3, x4, y4);
-		float x1mx2 = x1 - x2;
-		float x3mx4 = x3 - x4;
-		float y1my2 = y1 - y2;
-		float y3my4 = y3 - y4;
-
-		float xnom = Det(detL1, x1mx2, detL2, x3mx4);
-		float ynom = Det(detL1, y1my2, detL2, y3my4);
-		float denom = Det(x1mx2, y1my2, x3mx4, y3my4);
-		if (denom == 0.0)//Lines don't seem to cross
-		{
-			//std::cout << "NO CROSS";
-			ixOut = -10000000;
-			iyOut = -10000000;
-			return new Point(ixOut, iyOut);
-		}
-
-		ixOut = xnom / denom;
-		iyOut = ynom / denom;
-
-		if (verifyBetweenRange(x1, x2, (float)ixOut) &&
-			verifyBetweenRange(x3, x4, (float)ixOut) &&
-			verifyBetweenRange(y1, y2, (float)iyOut) &&
-			verifyBetweenRange(y3, y4, (float)iyOut))
-		{
-
-
-			if (Float.isFinite(ixOut) || Float.isFinite(iyOut)) //Probably a numerical issue
-			{
-				//std::cout << "INF";
-				new Point(ixOut, iyOut);
-			}
-			else
-			{
-				//std::cout << "ALL GOOD";
-				new Point(ixOut, iyOut);
-			}
-
-		}
-		else
-		{
-			//std::cout << "NOT IN BOUNDS";
-			new Point(-10000000, -10000000);
-		}
-        return null;
-	}
+        }
 
 
     
